@@ -1,0 +1,1 @@
+{"homing_offset": [-485, 3568, -2941, -2871, 1885, -3184], "drive_mode": [0, 1, 0, 0, 1, 0], "start_pos": [480, 3503, 3027, 2851, 1900, 3590], "end_pos": [1509, -2544, 3965, 3895, -861, 4208], "calib_mode": ["DEGREE", "DEGREE", "DEGREE", "DEGREE", "DEGREE", "LINEAR"], "motor_names": ["gripper"]}
