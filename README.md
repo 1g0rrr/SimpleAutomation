@@ -1,6 +1,23 @@
+# Chain of models
+
+Use multiple ACT models to solve more complex task.
+
+https://github.com/user-attachments/assets/f265688e-054d-4855-bcb0-aaf81dd66ba7
+
+For example in lamp testing demo we combined 3 models:
+
+1. For getting lamp from random position
+2. For precise insertion into the tester
+3. For sorting working/not working bulbs
+
+# Tips
+
+-   Pick and place from random position is hard and gripper can grab object not precisely at the center. Re-grab object at the beginning of next model
+-   Make sure you have all inintial positions in the following model to prevent robot from sudden movements.
+
 # Installation
 
-1.  If you didn't install Lerobot, install it. Example of installation with Feetech support:
+1.  If you didn't install Lerobot, install:
 
 ```
 git clone -b user/rcadene/2024_09_04_feetech https://github.com/huggingface/lerobot.git
@@ -8,14 +25,14 @@ cd lerobot
 pip install -e .
 ```
 
-2 Install Simple Automation scripts in another folder
+2 Clone Simple Automation scripts in another folder
 
 ```
 git clone https://github.com/1g0rrr/SimpleAutomation.git
 cd SimpleAutomation
 ```
 
-3 Setup ports for your so100 robot in "core/configs/robot/so100.yaml". If you use Koch arm create corresponding file.
+3 Setup ports for your robot in "core/configs/robot/so100.yaml". If you use Koch arm create corresponding file.
 
 # Run
 
@@ -49,6 +66,7 @@ python core/models_chain.py record \
 ### Run evaluation
 
 Fill episodes chain by changing example "core/configs/chains/lamp_testing.yaml"
+Press "right" to move to the next model
 
 ```
 python core/models_chain.py evaluate \
@@ -65,5 +83,3 @@ Choose A100 as a GPU.
 It will take about 2.5 hours and $1.5 to train typical 80K steps.
 Don't disconnect colab and don't close browser as all data will be deleted.
 https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab/SimpleAutomationTrainModel.ipynb
-
-# Tips for chaining models
