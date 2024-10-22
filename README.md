@@ -2,18 +2,13 @@
 
 Use multiple ACT models to solve more complex robotics task.
 
-https://github.com/user-attachments/assets/76f47c09-cc9e-40e7-b401-da85258b3f98
+https://github.com/user-attachments/assets/c1692a7c-a353-49f0-8119-c8c6e14c9a89
 
 For example in lamp testing demo we combined 3 models:
 
 1. For getting lamp from random position
 2. For precise insertion into the tester
 3. For sorting working/not working bulbs
-
-# Tips
-
--   Pick and place from random position is hard and gripper can grab object not precisely at the center. Re-grab object at the beginning of next model
--   Make sure you have all inintial positions in the following model to prevent robot from sudden movements.
 
 # Installation
 
@@ -36,19 +31,20 @@ cd SimpleAutomation
 
 # Run
 
-### Run teleoperation:
+### Run evaluation
 
-Use it for testing if all is working.
+-   Change config file to your models "core/configs/chains/lamp_testing.yaml"
+-   While evaluating press "right" key to move to the next model
 
 ```
-python core/models_chain.py teleoperate \
- --robot-path core/configs/robot/so100.yaml \
- --robot-overrides '~cameras'
+python core/models_chain.py evaluate \
+  --robot-path core/configs/robot/so100.yaml \
+  --chain-path core/configs/chains/lamp_testing.yaml
 ```
 
 ### Run recording
 
--   The difference from Lerobot is added teleoperation between episodes. You can set robot to position other than "rest" befre recording. This is usefull to be able to switch between models in this position.
+-   The difference from Lerobot is added teleoperation step between episodes. You can set robot to position other than "rest" befre recording. This is usefull to be able to switch between models in this position.
 
 ```
 python core/models_chain.py record \
@@ -63,22 +59,26 @@ python core/models_chain.py record \
   --num-episodes 2
 ```
 
-### Run evaluation
+### Run teleoperation:
 
--   Edit config file with your models "core/configs/chains/lamp_testing.yaml"
--   Tip: Press "right" to move to the next model
+Use it for testing if all is working.
 
 ```
-python core/models_chain.py evaluate \
-  --robot-path core/configs/robot/so100.yaml \
-  --chain-path core/configs/chains/lamp_testing.yaml
+python core/models_chain.py teleoperate \
+ --robot-path core/configs/robot/so100.yaml \
+ --robot-overrides '~cameras'
 ```
+
+# Tips
+
+-   Make sure you have all inintial positions in the following model to prevent robot from sudden movements.
+-   "Pick and place" task is hard for the model and gripper can grab object not precisely at the center. To solve this re-grab object at the beginning of next model.
 
 # Training
 
 ### Train model in Google Colab:
 
-Train model with Lerobot in Google Colab.
+You can model in Google Colab to save time.
 https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab/SimpleAutomationTrainModel.ipynb
 
 -   It will take about 2.5 hours and $1.5 to train typical 80K steps.

@@ -1,5 +1,4 @@
 models:
-    # name: (index, model)
     grab_lamp:
         repo_id: "1g0rrr/grab_lamp"
         control_time_s: 20
