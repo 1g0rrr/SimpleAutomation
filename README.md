@@ -1,14 +1,9 @@
 # Chain of models
 
 Use multiple ACT models to solve more complex robotics task.
-
 https://github.com/user-attachments/assets/76f47c09-cc9e-40e7-b401-da85258b3f98
 
 For example in lamp testing demo we combined 3 models:
-
-
-https://github.com/user-attachments/assets/76f47c09-cc9e-40e7-b401-da85258b3f98
-
 
 1. For getting lamp from random position
 2. For precise insertion into the tester
