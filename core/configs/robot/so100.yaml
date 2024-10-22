@@ -1,5 +1,5 @@
 _target_: lerobot.common.robot_devices.robots.manipulator.ManipulatorRobot
-robot_type: so_100
+robot_type: so100
 calibration_dir: .cache/calibration/so_100
 
 # `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.
@@ -7,10 +7,12 @@ calibration_dir: .cache/calibration/so_100
 # the number of motors in your follower arms.
 max_relative_target: null
 # usbmodem58760434751
+# dev/tty.usbmodem58760434751 - leader with original bus
 leader_arms:
     main:
         _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
-        port: /dev/tty.usbmodem58760434751
+        # _target_: lerobot.common.robot_devices.motors.dummy_arm.SimulatedFollower
+        port: /dev/tty.usbmodem58760434771
         motors:
             # name: (index, model)
             shoulder_pan: [1, "sts3215"]
@@ -23,6 +25,7 @@ leader_arms:
 follower_arms:
     main:
         _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+        # _target_: lerobot.common.robot_devices.motors.dummy_arm.SimulatedFollower
         port: /dev/tty.usbmodem58760429711
         motors:
             # name: (index, model)
@@ -49,4 +52,4 @@ cameras:
 # ~ Koch specific settings ~
 # Sets the leader arm in torque mode with the gripper motor set to this angle. This makes it possible
 # to squeeze the gripper and have it spring back to an open position on its own.
-gripper_open_degree: 35.156
+# gripper_open_degree: 35.156

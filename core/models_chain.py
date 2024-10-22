@@ -1,103 +1,3 @@
-"""
-Utilities to control a robot.
-
-Useful to record a dataset, replay a recorded episode, run the policy on your robot
-and record an evaluation dataset, and to recalibrate your robot if needed.
-
-Examples of usage:
-
-- Recalibrate your robot:
-```bash
-python lerobot/scripts/control_robot.py calibrate
-```
-
-- Unlimited teleoperation at highest frequency (~200 Hz is expected), to exit with CTRL+C:
-```bash
-python lerobot/scripts/control_robot.py teleoperate
-
-# Remove the cameras from the robot definition. They are not used in 'teleoperate' anyway.
-python lerobot/scripts/control_robot.py teleoperate --robot-overrides '~cameras'
-```
-
-- Unlimited teleoperation at a limited frequency of 30 Hz, to simulate data recording frequency:
-```bash
-python lerobot/scripts/control_robot.py teleoperate \
-    --fps 30
-```
-
-- Record one episode in order to test replay:
-```bash
-python lerobot/scripts/control_robot.py record \
-    --fps 30 \
-    --root tmp/data \
-    --repo-id $USER/koch_test \
-    --num-episodes 1 \
-    --run-compute-stats 0
-```
-
-- Visualize dataset:
-```bash
-python lerobot/scripts/visualize_dataset.py \
-    --root tmp/data \
-    --repo-id $USER/koch_test \
-    --episode-index 0
-```
-
-- Replay this test episode:
-```bash
-python lerobot/scripts/control_robot.py replay \
-    --fps 30 \
-    --root tmp/data \
-    --repo-id $USER/koch_test \
-    --episode 0
-```
-
-- Record a full dataset in order to train a policy, with 2 seconds of warmup,
-30 seconds of recording for each episode, and 10 seconds to reset the environment in between episodes:
-```bash
-python lerobot/scripts/control_robot.py record \
-    --fps 30 \
-    --root data \
-    --repo-id $USER/koch_pick_place_lego \
-    --num-episodes 50 \
-    --warmup-time-s 2 \
-    --episode-time-s 30 \
-    --reset-time-s 10
-```
-
-**NOTE**: You can use your keyboard to control data recording flow.
-- Tap right arrow key '->' to early exit while recording an episode and go to resseting the environment.
-- Tap right arrow key '->' to early exit while resetting the environment and got to recording the next episode.
-- Tap left arrow key '<-' to early exit and re-record the current episode.
-- Tap escape key 'esc' to stop the data recording.
-This might require a sudo permission to allow your terminal to monitor keyboard events.
-
-**NOTE**: You can resume/continue data recording by running the same data recording command twice.
-To avoid resuming by deleting the dataset, use `--force-override 1`.
-
-- Train on this dataset with the ACT policy:
-```bash
-DATA_DIR=data python lerobot/scripts/train.py \
-    policy=act_koch_real \
-    env=koch_real \
-    dataset_repo_id=$USER/koch_pick_place_lego \
-    hydra.run.dir=outputs/train/act_koch_real
-```
-
-- Run the pretrained policy on the robot:
-```bash
-python lerobot/scripts/control_robot.py record \
-    --fps 30 \
-    --root data \
-    --repo-id $USER/eval_act_koch_real \
-    --num-episodes 10 \
-    --warmup-time-s 2 \
-    --episode-time-s 30 \
-    --reset-time-s 10
-    -p outputs/train/act_koch_real/checkpoints/080000/pretrained_model
-```
-"""
-
 import argparse
 import logging
 import time
@@ -176,7 +76,6 @@ def calibrate(robot: Robot, arms: list[str] | None):
     robot.disconnect()
     print("Calibration is done! You can now teleoperate and record datasets!")
 
-
 @safe_disconnect
 def teleoperate(
     robot: Robot, fps: int | None = None, teleop_time_s: float | None = None, display_cameras: bool = False
@@ -188,6 +87,42 @@ def teleoperate(
         teleoperate=True,
         display_cameras=display_cameras,
     )
+
+@safe_disconnect
+def evaluate(
+    robot: Robot, 
+    chain_path: str | None = None,
+    fps: int | None = None, 
+    teleop_time_s: float | None = None, 
+    display_cameras: bool = False
+):
+    robot_cfg = init_hydra_config(chain_path)
+
+    models = robot_cfg["models"]
+    policies = []
+    for model_name in models:
+        model = models[model_name]
+        policy_overrides = ["device=cpu"]
+        policy, policy_fps, device, use_amp = init_policy(model["repo_id"], policy_overrides)
+        policies.append({"policy": policy, "policy_fps": policy_fps, "device": device, "use_amp": use_amp, "control_time_s": model["control_time_s"]})
+
+    listener, events = init_keyboard_listener()
+    for policy_obj in policies:
+
+        control_loop(
+            robot=robot,
+            control_time_s=policy_obj["control_time_s"],
+            display_cameras=display_cameras,
+            events=events,
+            policy=policy_obj["policy"],
+            device=policy_obj["device"],
+            use_amp=policy_obj["use_amp"],
+            fps = policy_obj["policy_fps"],
+            teleoperate=False,
+        )
+        print("Model is done!")
+
+    print("Teleoperation is done!")
 
 
 @safe_disconnect
@@ -265,6 +200,15 @@ def record(
             break
 
         episode_index = dataset["num_episodes"]
+
+        # Visual sign in terminal that a recording is starting
+        print("============================================")
+        print("============================================")
+        print("===========  START RECORDING  ==============")
+        print("============================================")
+        print("============================================")
+        print("============================================")
+
         log_say(f"Recording episode {episode_index}", play_sounds)
         record_episode(
             dataset=dataset,
@@ -287,6 +231,8 @@ def record(
         ):
             log_say("Reset the environment", play_sounds)
             reset_environment(robot, events, reset_time_s)
+            log_say("Prepare position", play_sounds)
+            warmup_record(robot, events, enable_teleoperation, warmup_time_s, display_cameras, fps)
 
         if events["rerecord_episode"]:
             log_say("Re-record episode", play_sounds)
@@ -379,6 +325,18 @@ if __name__ == "__main__":
         default=1,
         help="Display all cameras on screen (set to 1 to display or 0).",
     )
+
+
+    parser_evaluate = subparsers.add_parser("evaluate", parents=[base_parser])
+    parser_evaluate.add_argument(
+        "--fps", type=none_or_int, default=None, help="Frames per second (set to None to disable)"
+    )
+    parser_evaluate.add_argument(
+        "--chain-path",
+        type=Path,
+        default="core/configs/chains/lamp_testing.yaml",
+        help="Path to chain configuration yaml file').",
+    )    
 
     parser_record = subparsers.add_parser("record", parents=[base_parser])
     parser_record.add_argument(
@@ -514,6 +472,9 @@ if __name__ == "__main__":
 
     elif control_mode == "teleoperate":
         teleoperate(robot, **kwargs)
+
+    elif control_mode == "evaluate":
+        evaluate(robot, **kwargs)
 
     elif control_mode == "record":
         record(robot, **kwargs)

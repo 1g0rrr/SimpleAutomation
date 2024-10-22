@@ -9,6 +9,9 @@ outputs
 videos
 pretrained_model
 
+# callibration
+.cache/*
+
 # Apple
 .DS_Store
 
@@ -77,8 +80,8 @@ coverage.xml
 
 # Ignore .cache except calibration
 .cache/*
-!.cache/calibration/
-!.cache/calibration/**
+.cache/calibration/
+.cache/calibration/**
 
 # Translations
 *.mo
