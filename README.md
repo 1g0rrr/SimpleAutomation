@@ -12,7 +12,7 @@ For example in lamp testing demo we combined 3 models:
 
 # Installation
 
-1.  If you didn't install Lerobot, install:
+1.  If you didn't install Lerobot, install it:
 
 ```
 git clone -b user/rcadene/2024_09_04_feetech https://github.com/huggingface/lerobot.git
@@ -20,20 +20,20 @@ cd lerobot
 pip install -e .
 ```
 
-2 Clone Simple Automation scripts in another folder
+2 Clone Simple Automation scripts to another folder
 
 ```
 git clone https://github.com/1g0rrr/SimpleAutomation.git
 cd SimpleAutomation
 ```
 
-3 Setup ports for your robot in "core/configs/robot/so100.yaml". If you use Koch arm create corresponding file.
+3 Setup ports for your robot in "core/configs/robot/so100.yaml".
 
 # Run
 
 ### Run evaluation
 
--   Change config file to your models "core/configs/chains/lamp_testing.yaml"
+-   Change config file for using your models "core/configs/chains/lamp_testing.yaml"
 -   While evaluating press "right" key to move to the next model
 
 ```
@@ -44,7 +44,7 @@ python core/models_chain.py evaluate \
 
 ### Run recording
 
--   The difference from Lerobot is added teleoperation step between episodes. You can set robot to position other than "rest" befre recording. This is usefull to be able to switch between models in this position.
+-   The difference from Lerobot's recording is added teleoperation between episodes. This is usefull to be able to switch between models in not "resting" position.
 
 ```
 python core/models_chain.py record \
