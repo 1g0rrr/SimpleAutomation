@@ -76,10 +76,11 @@ python core/models_chain.py evaluate \
 
 # Training
 
-### Train model in google colab:
+### Train model in Google Colab:
 
-Feel free to use this simple script for model training in Google Colab.
-Choose A100 as a GPU.
-It will take about 2.5 hours and $1.5 to train typical 80K steps.
-Don't disconnect colab and don't close browser as all data will be deleted.
+Train model with Lerobot in Google Colab.
 https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab/SimpleAutomationTrainModel.ipynb
+
+-   It will take about 2.5 hours and $1.5 to train typical 80K steps.
+-   Choose A100 as fastest GPU.
+-   Don't disconnect colab and don't close browser as all data will be deleted.
