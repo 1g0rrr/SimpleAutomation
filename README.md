@@ -1,8 +1,8 @@
 # Chain of models
 
-Use multiple ACT models to solve more complex task.
+Use multiple ACT models to solve more complex robotics task.
 
-https://github.com/user-attachments/assets/f265688e-054d-4855-bcb0-aaf81dd66ba7
+https://github.com/user-attachments/assets/76f47c09-cc9e-40e7-b401-da85258b3f98
 
 For example in lamp testing demo we combined 3 models:
 
@@ -52,7 +52,7 @@ python core/models_chain.py teleoperate \
 
 ### Run recording
 
-Difference with Lerobot is added warming up between episodes, so you can set robot to position other than "rest". This is usefull to be able to switch between models in this position.
+-   The difference from Lerobot is added teleoperation between episodes. You can set robot to position other than "rest" befre recording. This is usefull to be able to switch between models in this position.
 
 ```
 python core/models_chain.py record \
@@ -69,8 +69,8 @@ python core/models_chain.py record \
 
 ### Run evaluation
 
-Fill episodes chain by changing example "core/configs/chains/lamp_testing.yaml"
-Press "right" to move to the next model
+-   Edit config file with your models "core/configs/chains/lamp_testing.yaml"
+-   Tip: Press "right" to move to the next model
 
 ```
 python core/models_chain.py evaluate \
