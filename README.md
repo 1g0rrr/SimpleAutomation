@@ -34,7 +34,7 @@ There are additional costs of assembling
 -   Printing: 30-50 hours, $10 plastic
 -   Assembly and calibration: 1-2 days
 
-We can offer an assembled, calibrated robot in US for $400
+We can offer fully assembled and calibrated robot in US for $400
 
 DM me if interested:
 
