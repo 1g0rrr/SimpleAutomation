@@ -25,7 +25,18 @@ Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
 
 ![Leader_And_Follower](./media/so-100.png)
 
-### Buy assembled:
+### Buy assembled in US:
+
+There are additional costs of assembling
+
+-   BOM price: $241
+-   Shipping: $30-$80 depending on speed (5-20 days)
+-   Printing: 30-50 hours, $10 plastic
+-   Assembly and calibration: 1-2 days
+
+We can offer an assembled, calibrated robot in US for $400
+
+DM me if interested:
 
 https://x.com/ihorbeaver
 
