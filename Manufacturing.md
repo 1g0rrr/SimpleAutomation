@@ -28,3 +28,5 @@ The video shows a chain of three models for sorting good bulbs from damaged ones
 
 Please fill the quick form
 https://forms.gle/PHdRyp4vDFGtGWfw7
+
+Or reach out us at X https://x.com/ihorbeaver
