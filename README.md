@@ -19,6 +19,16 @@ For example, in the lamp testing demo, we combined 3 models:
   </tr>
 </table>
 
+# Hardware
+
+Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
+
+![Leader_And_Follower](./media/so-100.png)
+
+### Buy assembled:
+
+https://x.com/ihorbeaver
+
 # Installation
 
 1.  If you didn't install Lerobot, install it:
