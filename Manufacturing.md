@@ -14,15 +14,13 @@ Two-arms robot for small/medium manufacturers.
 
 To solve tasks we use chain of most advanced AI robotic models.
 
-### Training
-
-Use a special joystick for controling the robot. You can do the tasks you need and after 10 minutes of examples, your tireless autonomous assistant is ready.
-
-### Demo
+![unnamed](https://github.com/user-attachments/assets/d105cf69-1b82-4581-90b7-9a9cd0a4f595)
 
 The video shows a chain of three models for sorting good bulbs from damaged ones.
 
-![unnamed](https://github.com/user-attachments/assets/d105cf69-1b82-4581-90b7-9a9cd0a4f595)
+### Training
+
+Use a special joystick for controling the robot. You can do the tasks you need and after 10 minutes of examples, your tireless autonomous assistant is ready.
 
 # Reserve yours
 
