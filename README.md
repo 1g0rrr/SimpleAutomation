@@ -11,13 +11,13 @@ For example, in the lamp testing demo, we combined 3 models:
 ![unnamed](https://github.com/user-attachments/assets/d105cf69-1b82-4581-90b7-9a9cd0a4f595)
 
 # Intro
+
 <table>
   <tr>
     <td><video src="https://github.com/user-attachments/assets/62472ce6-3084-41ec-8245-32a3c10f4b79" width=200/></td>
     <td></td>
   </tr>
 </table>
-
 
 # Installation
 
@@ -93,8 +93,3 @@ https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab
 -   It will take about 2.5 hours and $1.5 to train typical 80K steps.
 -   Choose A100 as fastest GPU.
 -   Don't disconnect colab and don't close browser as all data will be deleted.
-
-# Future
-### Big Sam v0.1
-![image_2024-10-23_16-08-09](https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44)
-
