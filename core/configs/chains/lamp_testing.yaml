@@ -1,10 +1,10 @@
 models:
     grab_lamp:
-        repo_id: "1g0rrr/grab_lamp"
-        control_time_s: 20
+        repo_id: "1g0rrr/paper_painting"
+        control_time_s: 120
     insert_lamp:
         repo_id: "1g0rrr/insert_lamp"
-        control_time_s: 22
+        control_time_s: 120
     testing_lamp:
         repo_id: "1g0rrr/testing_lamp"
-        control_time_s: 20
+        control_time_s: 120

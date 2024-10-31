@@ -94,7 +94,7 @@ def evaluate(
     chain_path: str | None = None,
     fps: int | None = None, 
     teleop_time_s: float | None = None, 
-    display_cameras: bool = False
+    display_cameras: bool = True
 ):
     robot_cfg = init_hydra_config(chain_path)
 
@@ -141,7 +141,7 @@ def record(
     run_compute_stats=True,
     push_to_hub=True,
     tags=None,
-    num_image_writer_processes=0,
+    num_image_writer_processes=4,
     num_image_writer_threads_per_camera=4,
     force_override=False,
     display_cameras=True,
