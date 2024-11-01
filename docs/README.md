@@ -31,6 +31,8 @@ A general purpose two-armed robot to automate tedious labour in small and medium
 If you have repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
 
 Fill the quick form to be added to the waitlist:
-https://forms.gle/PHdRyp4vDFGtGWfw7
 
-Or reach out us at X https://x.com/ihorbeaver
+[https://forms.gle/PHdRyp4vDFGtGWfw7](https://forms.gle/PHdRyp4vDFGtGWfw7)
+
+Or reach out us at X
+[https://x.com/ihorbeaver](https://x.com/ihorbeaver)
