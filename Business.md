@@ -28,7 +28,7 @@ A general purpose two-armed robot to automate tedious labour in small and medium
 
 # Take advantage
 
-If there are repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
+If you have repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
 
 Fill the quick form and we contact you back:
 https://forms.gle/PHdRyp4vDFGtGWfw7
