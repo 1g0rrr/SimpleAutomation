@@ -22,7 +22,7 @@ The robot uses a set of 3 models to grab a lamp from a random position and sorts
 
 # Future
 
-A general-purpose two-armed robot to automate tedious labor in small and medium-sized businesses. It can solder, glue, paint, do cable management, assemble into the case, work with tools, do quality checks, pack, sort, and control other machines.
+A general-purpose two-armed robot to automate tedious labor in small and medium-sized businesses. It can solder, glue, paint, do cable management, assemble into the case, work with tools, do quality control, pack, sort, and control other machines.
 
 <img src="https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44" width="600">
 
@@ -38,9 +38,9 @@ Or reach out to us at X
 [https://x.com/ihorbeaver](https://x.com/ihorbeaver)
 
 # Team
+
 Hi, we are Igor & Viktor.
 
 We have been founders of a manufacturing company for 9 years, made a Kickstarter campaign, and had a booth at CES 2024 in Las Vegas.
 
 <img src="https://github.com/user-attachments/assets/c11b0e39-d233-4422-9daf-fa4423afafbb" width="300">
-
