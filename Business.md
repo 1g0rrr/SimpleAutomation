@@ -22,15 +22,15 @@ The robot uses a set of 3 models to grab a lamp from a random position and sorts
 
 # Future
 
-A general purpose two-armed robot to automate tedious labour in small and medium-sized businesses.
+A general purpose two-armed robot to automate tedious labour in small and medium-sized businesses. It can solder, glue, paint, do cable management, assemble into the case, work with tools, do quality check, pack, sort and control other machines.
 
 <img src="https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44" width="600">
 
-# Take advantage
+# How to get
 
 If you have repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
 
-Fill the quick form and we contact you back:
+Fill the quick form to be added to the waitlist:
 https://forms.gle/PHdRyp4vDFGtGWfw7
 
 Or reach out us at X https://x.com/ihorbeaver
