@@ -2,15 +2,14 @@
 
 Two-arms robot for small/medium manufacturers.
 
-Simple robotic arms can be quite capable of solving precise manual tasks.
-|Examples|Examples|
-|----|---------|
-|<img src="https://github.com/user-attachments/assets/5a34045a-4e5a-4371-8cda-a3c30949864c"  width=200/>|<img src="https://github.com/user-attachments/assets/685c48e7-6755-454e-ad81-2f9c6c645a3d"  width=200/>|
-|<img src="https://github.com/user-attachments/assets/bd65eb7e-e2bf-413c-a41d-f76fc6fd64af" width=200/>|<img src="https://github.com/user-attachments/assets/21227428-3563-42ce-8522-90b1714b9d82" width=200/>|
+![short_tasks-ezgif com-optimize](https://github.com/user-attachments/assets/93e8545c-bb66-4b93-a07d-3d25e2dcf251)
+
+![long_tasks-ezgif com-optimize](https://github.com/user-attachments/assets/df8b4a9d-3331-45fc-a5fa-fa990e2f0ca6)
 
 Combining arms with the most advanced AI models teaching robots can require just minutes of examples. No need for complex setup or programming.
 
-Demo:
+# Demo:
+
 The robot picks up lamps at random and sorts whether they work or not.
 ![models](https://github.com/user-attachments/assets/eedceb0e-0ef7-41ac-b559-0efb6c105875)
 
@@ -20,7 +19,7 @@ The robot picks up lamps at random and sorts whether they work or not.
 
 ### "Big Sam" v1
 
-![image_2024-10-23_16-08-09](https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44)
+<img src="https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44" width="600">
 
 # Software
 
