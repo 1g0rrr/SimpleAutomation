@@ -26,7 +26,7 @@ A general purpose two-armed robot to automate tedious labour in small and medium
 
 <img src="https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44" width="600">
 
-# How to get
+# Get
 
 If you have repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
 
