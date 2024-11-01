@@ -1,6 +1,6 @@
 # SimpleAutomation
 
-Cheap (starting at $1k) robo-arms with the most advanced AI inside (Tesla Bot uses the same) to automate repetitive stationary tasks in small and medium businesses.
+Cheap (starting at $1k) robot-arms with the most advanced AI inside (Tesla Bot uses the same) to automate repetitive stationary tasks in small and medium businesses.
 
 # Simple but capable hardware
 
@@ -12,7 +12,7 @@ Simple and affordable robotic arms can perform precise manual tasks:
 
 # Advanced AI models:
 
-Combination of the most advanced AI models helps us solve real-world problems.
+A combination of the most advanced AI models helps us solve real-world problems.
 
 ### “Checking Incoming Parts” demo:
 
@@ -22,7 +22,7 @@ The robot uses a set of 3 models to grab a lamp from a random position and sorts
 
 # Future
 
-A general purpose two-armed robot to automate tedious labour in small and medium-sized businesses. It can solder, glue, paint, do cable management, assemble into the case, work with tools, do quality check, pack, sort and control other machines.
+A general-purpose two-armed robot to automate tedious labor in small and medium-sized businesses. It can solder, glue, paint, do cable management, assemble into the case, work with tools, do quality checks, pack, sort, and control other machines.
 
 <img src="https://github.com/user-attachments/assets/e856b9e8-f089-46fa-a32c-edd7e769fc44" width="600">
 
@@ -30,9 +30,17 @@ A general purpose two-armed robot to automate tedious labour in small and medium
 
 If you have repetitive manual tasks in your work, contact us so we can help you automate them and grow your business.
 
-Fill the quick form to be added to the waitlist:
+Fill out the quick form to be added to the waitlist:
 
 [https://forms.gle/PHdRyp4vDFGtGWfw7](https://forms.gle/PHdRyp4vDFGtGWfw7)
 
-Or reach out us at X
+Or reach out to us at X
 [https://x.com/ihorbeaver](https://x.com/ihorbeaver)
+
+# Team
+Hi, we are Igor & Viktor.
+
+We have been founders of a manufacturing company for 9 years, made a Kickstarter campaign, and had a booth at CES 2024 in Las Vegas.
+
+<img src="https://github.com/user-attachments/assets/c11b0e39-d233-4422-9daf-fa4423afafbb" width="300">
+
