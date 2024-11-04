@@ -1,0 +1,9 @@
+models:
+    grab_stick:
+        repo_id: "1g0rrr/grab_stick"
+        control_time_s: 120
+    pause:
+        control_time_s: 120
+    release_stick:
+        repo_id: "1g0rrr/release_stick"
+        control_time_s: 120
