@@ -1,5 +1,4 @@
-# Set of helper scripts on top of LeRobot
-<img src="https://github.com/user-attachments/assets/a3a721b2-c359-4b06-9ac9-404c8c340a03" width=500/>
+# Opensource robot to automate repetitive tasks.
 
 # Multiple models
 
