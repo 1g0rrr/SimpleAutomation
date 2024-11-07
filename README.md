@@ -1,5 +1,5 @@
 # Set of helper scripts on top of LeRobot
-<img src="https://github.com/user-attachments/assets/6e96531c-bf3d-4d5e-98c8-183fa3e10d17" width=500/>
+<img src="https://github.com/user-attachments/assets/a3a721b2-c359-4b06-9ac9-404c8c340a03" width=500/>
 
 # Multiple models
 
@@ -45,10 +45,10 @@ https://x.com/ihorbeaver
 
 # Installation
 
-1.  If you didn't install Lerobot, install it:
+1.  If you didn't install LeRobot, install it:
 
 ```
-git clone -b user/rcadene/2024_09_04_feetech https://github.com/huggingface/lerobot.git
+git clone https://github.com/huggingface/lerobot.git
 cd lerobot
 pip install -e .
 ```
