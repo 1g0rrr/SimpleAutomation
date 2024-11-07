@@ -1,4 +1,5 @@
 # Set of helper scripts on top of LeRobot
+![image](https://github.com/user-attachments/assets/6e96531c-bf3d-4d5e-98c8-183fa3e10d17)
 
 
 ### Use multiple ACT models to solve more complex robotics tasks.
