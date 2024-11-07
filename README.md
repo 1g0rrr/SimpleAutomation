@@ -1,5 +1,5 @@
 # Set of helper scripts on top of LeRobot
-<img src="https://github.com/user-attachments/assets/6e96531c-bf3d-4d5e-98c8-183fa3e10d17" width=400/>
+<img src="https://github.com/user-attachments/assets/6e96531c-bf3d-4d5e-98c8-183fa3e10d17" width=500/>
 
 # Multiple models
 
