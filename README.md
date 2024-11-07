@@ -1,4 +1,5 @@
-# Chain of models
+# Set of helper scripts on top of LeRobot
+
 
 ### Use multiple ACT models to solve more complex robotics tasks.
 
