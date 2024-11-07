@@ -1,8 +1,6 @@
 # Opensource robot to automate repetitive tasks.
 
-# Multiple models
-
-### Use multiple ACT models to solve more complex robotics tasks.
+### Use multiple ACT models to solve complex robotics tasks.
 
 For example, in the lamp testing demo, we combined 3 models:
 
