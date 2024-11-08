@@ -1,8 +1,0 @@
-timeline:
-    wait_llm:
-        message: "What should I do next?"
-        functions:
-            clean_whiteboard:
-                repo_id: "1g0rrr/clean_whiteboard"
-                time_s: 0
-        loop: true

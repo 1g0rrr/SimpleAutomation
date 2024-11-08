@@ -10,8 +10,8 @@ max_relative_target: null
 # dev/tty.usbmodem58760434751 - leader with original bus
 leader_arms:
     main:
-        _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
-        # _target_: dummy_arm.SimulatedFollower
+        # _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+        _target_: dummy_arm.SimulatedFollower
         port: /dev/tty.usbmodem58760434771
         motors:
             # name: (index, model)
@@ -24,8 +24,8 @@ leader_arms:
 
 follower_arms:
     main:
-        _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
-        # _target_: dummy_arm.SimulatedFollower
+        # _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+        _target_: dummy_arm.SimulatedFollower
         port: /dev/tty.usbmodem58760429711
         motors:
             # name: (index, model)

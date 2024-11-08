@@ -1,10 +1,17 @@
 models:
-    grab_lamp:
-        repo_id: "1g0rrr/paper_painting"
-        control_time_s: 120
-    insert_lamp:
-        repo_id: "1g0rrr/insert_lamp"
-        control_time_s: 120
-    testing_lamp:
-        repo_id: "1g0rrr/testing_lamp"
-        control_time_s: 120
+    grab_orange:
+        repo_id: "1g0rrr/grab_sponge"
+        control_time_s: 9999
+    # grab_candy:
+    #     repo_id: "1g0rrr/grab_candy"
+    #     control_time_s: 120
+    # grab_sponge:
+    #     repo_id: "1g0rrr/grab_sponge"
+    #     control_time_s: 120
+
+    # insert_lamp:
+    #     repo_id: "1g0rrr/insert_lamp"
+    #     control_time_s: 120
+    # testing_lamp:
+    #     repo_id: "1g0rrr/testing_lamp"
+    #     control_time_s: 120

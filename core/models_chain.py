@@ -3,7 +3,17 @@ import logging
 import time
 from pathlib import Path
 from typing import List
+import os
 
+from dotenv import load_dotenv, find_dotenv
+import speech_recognition as sr
+from langchain_openai import ChatOpenAI
+import shutil
+import tqdm
+from langchain_core.tools import tool
+from langchain.agents import create_tool_calling_agent, AgentExecutor
+
+from lerobot.common.robot_devices.cameras.opencv import OpenCVCamera
 # from safetensors.torch import load_file, save_file
 from lerobot.common.datasets.lerobot_dataset import LeRobotDataset
 from lerobot.common.datasets.populate_dataset import (
@@ -89,6 +99,181 @@ def teleoperate(
     )
 
 @safe_disconnect
+def llm_agent(
+    robot: Robot, 
+    chain_path: str | None = None,
+    fps: int | None = None, 
+    teleop_time_s: float | None = None, 
+    display_cameras: bool = True
+):
+    import pyttsx3
+    import base64
+    import cv2
+
+    from langchain.schema import SystemMessage
+    from langchain_core.prompts import (
+        ChatPromptTemplate,
+        HumanMessagePromptTemplate,
+        MessagesPlaceholder,
+    )
+
+
+    _ = load_dotenv(find_dotenv())
+    api_key = os.getenv("OPENAI_API_KEY")
+    
+
+    robot.connect()
+    engine = pyttsx3.init()
+
+
+
+    models = {
+        "grab_sponge":  {"repo_id": "1g0rrr/grab_sponge", "control_time_s": 32},
+         "grab_orange": {"repo_id": "1g0rrr/grab_orange", "control_time_s": 10}, 
+         "grab_candy":{"repo_id": "1g0rrr/grab_candy", "control_time_s": 10}
+    }
+
+    global policies 
+    policies = {}
+
+    for model_name in models:
+        model = models[model_name]
+        policy_overrides = ["device=cpu"]
+        policy, policy_fps, device, use_amp = init_policy(model["repo_id"], policy_overrides)
+        policies[model_name] = ({"policy": policy, "policy_fps": policy_fps, "device": device, "use_amp": use_amp, "control_time_s": model["control_time_s"]})
+
+
+    @tool(return_direct=True)
+    def grab_sponge():
+        """Clean the desktop.
+        """
+        global policies
+        do_control_loop(policies["grab_sponge"])
+
+        return "Done"
+    
+    @tool(return_direct=True)
+    def grab_orange():
+        """Grab orange and give it to user.
+        """
+        global policies
+        do_control_loop(policies["grab_orange"])
+
+        return "Done"
+        
+    @tool(return_direct=True)
+    def grab_candy():
+        """Grab candy and give it to user.
+        """
+        global policies
+        do_control_loop(policies["grab_candy"])
+
+        return "Done"
+
+    @tool(return_direct=True)
+    def describe_area():
+        """Describing what I can see.
+        """
+
+        llm = ChatOpenAI(temperature=0.1, model=llm_model, api_key=api_key)
+
+        cam1 = OpenCVCamera(camera_index=0, fps=30, width=640, height=480, color_mode="bgr")
+        cam1.connect()
+        img = cam1.read()
+        
+        # cv2.imshow("Image", img)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+
+        _, encoded_img = cv2.imencode('.png', img) 
+        base64_img = base64.b64encode(encoded_img).decode("utf-8")    
+        
+        mime_type = 'image/png'
+        encoded_image_url = f"data:{mime_type};base64,{base64_img}"
+
+
+        chat_prompt_template = ChatPromptTemplate.from_messages(
+            messages=[
+                SystemMessage(content='Describe in one phrase what objects you see on the table. Not including robot. Start answer with "I see..."'),
+                HumanMessagePromptTemplate.from_template(
+                     [{'image_url': "{encoded_image_url}", 'type': 'image_url'}],
+                )
+            ]
+        )
+
+        chain = chat_prompt_template | llm
+        res = chain.invoke({"encoded_image_url": encoded_image_url})
+
+        return res.content
+        
+    def do_control_loop(policy_obj):
+        global policies, models
+        control_loop(
+            robot=robot,
+            control_time_s=policy_obj["control_time_s"],
+            display_cameras=display_cameras,
+            policy=policy_obj["policy"],
+            device=policy_obj["device"],
+            use_amp=policy_obj["use_amp"],
+            fps = policy_obj["policy_fps"],
+            teleoperate=False,
+        )
+
+    agent_prompt = ChatPromptTemplate.from_messages([
+        ("system", "you're a helpful assistant"), 
+        ("human", "{input}"), 
+        ("placeholder", "{agent_scratchpad}"),
+    ])
+
+    llm_model = "gpt-4o-mini"
+
+    llm = ChatOpenAI(temperature=0.1, model=llm_model, api_key=api_key)
+
+    tools = [grab_sponge, grab_orange, grab_candy, describe_area]
+
+    agent = create_tool_calling_agent(llm, tools, agent_prompt)
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+    r = sr.Recognizer()    
+
+    def listen():
+        with sr.Microphone() as source:
+            audio = r.listen(source, phrase_time_limit=5)
+            print("Processing...")
+        try:
+            text = r.recognize_google(audio)
+            return text
+        except Exception as e:
+            print("Error: " + str(e))
+            return None
+
+
+    def generate_response(prompt):
+        completions = agent_executor.invoke({"input": prompt, })
+        message = completions["output"]
+        return message
+
+    while True:
+        print("Listening...")
+
+        audio_prompt = listen()
+        if audio_prompt is not None:
+            print("You: " + audio_prompt)
+            response = generate_response(audio_prompt)
+            engine.say(response)
+            engine.runAndWait()
+
+            print("Robot: " + response)
+            # to lower case
+            if audio_prompt.lower() == "thank you":
+                # Exit the program
+                exit()
+        else:
+            print("Sorry, I did not catch that. Please try again.")
+            continue
+
+
+@safe_disconnect
 def evaluate(
     robot: Robot, 
     chain_path: str | None = None,
@@ -108,7 +293,6 @@ def evaluate(
 
     listener, events = init_keyboard_listener()
     for policy_obj in policies:
-
         control_loop(
             robot=robot,
             control_time_s=policy_obj["control_time_s"],
@@ -165,6 +349,7 @@ def record(
             logging.warning(
                 f"There is a mismatch between the provided fps ({fps}) and the one from policy config ({policy_fps})."
             )
+
 
     # Create empty dataset or load existing saved episodes
     sanity_check_dataset_name(repo_id, policy)
@@ -231,8 +416,8 @@ def record(
         ):
             log_say("Reset the environment", play_sounds)
             reset_environment(robot, events, reset_time_s)
-            log_say("Prepare position", play_sounds)
-            warmup_record(robot, events, enable_teleoperation, warmup_time_s, display_cameras, fps)
+            # log_say("Prepare position", play_sounds)
+            # warmup_record(robot, events, enable_teleoperation, warmup_time_s, display_cameras, fps)
 
         if events["rerecord_episode"]:
             log_say("Re-record episode", play_sounds)
@@ -251,6 +436,17 @@ def record(
     stop_recording(robot, listener, display_cameras)
 
     lerobot_dataset = create_lerobot_dataset(dataset, run_compute_stats, push_to_hub, tags, play_sounds)
+
+    # data_dict = ["observation.images.laptop", "observation.images.phone"]
+    # image_keys = [key for key in data_dict if "image" in key]
+    # local_dir = Path(root) / repo_id
+    # videos_dir = local_dir / "videos"
+
+    # for episode_index in tqdm.tqdm(range(num_episodes)):
+    #     for key in image_keys:
+    #         # key = f"observation.images.{name}"
+    #         tmp_imgs_dir = videos_dir / f"{key}_episode_{episode_index:06d}"
+    #         shutil.rmtree(tmp_imgs_dir, ignore_errors=True)
 
     log_say("Exiting", play_sounds)
     return lerobot_dataset
@@ -335,6 +531,15 @@ if __name__ == "__main__":
         "--chain-path",
         type=Path,
         default="core/configs/chains/lamp_testing.yaml",
+        help="Path to chain configuration yaml file').",
+    )    
+
+
+    parser_llm_agent = subparsers.add_parser("llm_agent", parents=[base_parser])
+    parser_llm_agent.add_argument(
+        "--chain-path",
+        type=Path,
+        default="core/configs/chains/clean_whiteboard.yaml",
         help="Path to chain configuration yaml file').",
     )    
 
@@ -475,6 +680,9 @@ if __name__ == "__main__":
 
     elif control_mode == "evaluate":
         evaluate(robot, **kwargs)
+
+    elif control_mode == "llm_agent":
+        llm_agent(robot, **kwargs)
 
     elif control_mode == "record":
         record(robot, **kwargs)
