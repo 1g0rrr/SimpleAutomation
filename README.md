@@ -36,7 +36,7 @@ cd SimpleAutomation
 
 # Run
 
-# Use multiple ACT models to solve complex robotics tasks.
+### Use multiple ACT models to solve complex robotics tasks.
 
 For example, in the lamp testing demo, we combined 3 models:
 
