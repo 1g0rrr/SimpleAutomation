@@ -1,14 +1,8 @@
 # Opensource robot to automate repetitive tasks.
 
-### Use multiple ACT models to solve complex robotics tasks.
+Currently, it's a set of helper scripts on top of LeRobot repo.
 
-For example, in the lamp testing demo, we combined 3 models:
-
-1. For getting the lamp from a random position
-2. For precise insertion into the tester
-3. For sorting working/not working bulbs
-
-![unnamed](https://github.com/user-attachments/assets/d105cf69-1b82-4581-90b7-9a9cd0a4f595)
+<img src="https://github.com/user-attachments/assets/4c30e970-5d89-48ea-86db-72ae8d1ab47a" width=450/>
 
 # Intro
 
@@ -19,26 +13,7 @@ For example, in the lamp testing demo, we combined 3 models:
   </tr>
 </table>
 
-# Hardware
 
-Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
-
-![Leader_And_Follower](./media/so-100.png)
-
-### Buy assembled in US:
-
-There are additional costs of assembling
-
--   BOM price: $241
--   Shipping: $30-$80 depending on speed (5-20 days)
--   Printing: 30-50 hours, $10 plastic
--   Assembly and calibration: 1-2 days
-
-We can offer properly assembled and calibrated robot in the US for $400
-
-DM me if interested:
-
-https://x.com/ihorbeaver
 
 # Installation
 
@@ -61,6 +36,16 @@ cd SimpleAutomation
 
 # Run
 
+# Use multiple ACT models to solve complex robotics tasks.
+
+For example, in the lamp testing demo, we combined 3 models:
+
+1. For getting the lamp from a random position
+2. For precise insertion into the tester
+3. For sorting working/not working bulbs
+
+![unnamed](https://github.com/user-attachments/assets/d105cf69-1b82-4581-90b7-9a9cd0a4f595)
+
 ### Run evaluation
 
 -   Change config file for using your models "core/configs/chains/lamp_testing.yaml"
@@ -70,6 +55,12 @@ cd SimpleAutomation
 python core/models_chain.py evaluate \
   --robot-path core/configs/robot/so100.yaml \
   --chain-path core/configs/chains/lamp_testing.yaml
+```
+
+### Use LLM agent to run models
+```
+python core/models_chain.py llm_agent \
+  --robot-path core/configs/robot/so100.yaml
 ```
 
 ### Run recording
@@ -99,6 +90,8 @@ python core/models_chain.py teleoperate \
  --robot-overrides '~cameras'
 ```
 
+
+
 # Tips
 
 -   Make sure you have all inintial positions in the following model to prevent robot from sudden movements.
@@ -114,3 +107,24 @@ https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab
 -   It will take about 2.5 hours and $1.5 to train typical 80K steps.
 -   Choose A100 as fastest GPU.
 -   Don't disconnect colab and don't close browser as all data will be deleted.
+
+# Hardware
+
+Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
+
+![Leader_And_Follower](./media/so-100.png)
+
+# Buy assembled in US:
+
+There are additional costs of assembling
+
+-   BOM price: $241
+-   Shipping: $30-$80 depending on speed (5-20 days)
+-   Printing: 30-50 hours, $10 plastic
+-   Assembly and calibration: 1-2 days
+
+We can offer properly assembled and calibrated robot in the US for $400
+
+DM me if interested:
+
+https://x.com/ihorbeaver
