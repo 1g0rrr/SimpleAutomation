@@ -128,3 +128,7 @@ We can offer properly assembled and calibrated robot in the US for $400
 DM me if interested:
 
 https://x.com/ihorbeaver
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=1g0rrr/simpleautomation&type=Timeline)](https://star-history.com/#1g0rrr/simpleautomation&Timeline)
