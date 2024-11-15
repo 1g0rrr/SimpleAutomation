@@ -109,7 +109,11 @@ https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab
 -   Don't disconnect colab and don't close browser as all data will be deleted.
 
 # Hardware
+S.A.M 01
+![arm2](https://github.com/user-attachments/assets/35113d53-93b1-4678-af15-463d563cd238)
 
+
+SO-100
 Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
 
 ![Leader_And_Follower](./media/so-100.png)
