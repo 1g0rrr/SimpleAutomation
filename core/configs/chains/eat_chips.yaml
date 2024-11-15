@@ -1,0 +1,16 @@
+llm_agent:
+    model: "gpt-4o-mini"
+    system_prompt: "You're a helpful robot-arm assistant. Answer simple, fun and super concise."
+    tools:
+        eat_chips:
+            repo_id: "1g0rrr/eat_chips"
+            desc: "Grab opne chip and give it to user."
+        grab_candy:
+            repo_id: "1g0rrr/grab_candy"
+            desc: "Grab candy and give it to user."
+        grab_sponge:
+            repo_id: "1g0rrr/grab_sponge"
+            desc: "Clean the desktop."
+        describe_area:
+          desc: "Describe the area around you."
+          prompt: "Describe in one phrase what objects you see on the table. Not including robot. Start answer with "I see...""

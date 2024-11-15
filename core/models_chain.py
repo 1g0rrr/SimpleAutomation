@@ -220,7 +220,7 @@ def llm_agent(
         )
 
     agent_prompt = ChatPromptTemplate.from_messages([
-        ("system", "you're a helpful assistant"), 
+        ("system", "You're a helpful robot-arm assistant. Answer super concise."), 
         ("human", "{input}"), 
         ("placeholder", "{agent_scratchpad}"),
     ])
@@ -238,7 +238,7 @@ def llm_agent(
 
     def listen():
         with sr.Microphone() as source:
-            audio = r.listen(source, phrase_time_limit=5)
+            audio = r.listen(source)
             print("Processing...")
         try:
             text = r.recognize_google(audio)
@@ -269,7 +269,7 @@ def llm_agent(
                 # Exit the program
                 exit()
         else:
-            print("Sorry, I did not catch that. Please try again.")
+            print("Can you repeat?")
             continue
 
 
@@ -325,8 +325,8 @@ def record(
     run_compute_stats=True,
     push_to_hub=True,
     tags=None,
-    num_image_writer_processes=4,
-    num_image_writer_threads_per_camera=4,
+    num_image_writer_processes=1,
+    num_image_writer_threads_per_camera=1,
     force_override=False,
     display_cameras=True,
     play_sounds=True,
@@ -437,16 +437,16 @@ def record(
 
     lerobot_dataset = create_lerobot_dataset(dataset, run_compute_stats, push_to_hub, tags, play_sounds)
 
-    # data_dict = ["observation.images.laptop", "observation.images.phone"]
-    # image_keys = [key for key in data_dict if "image" in key]
-    # local_dir = Path(root) / repo_id
-    # videos_dir = local_dir / "videos"
+    data_dict = ["observation.images.laptop", "observation.images.phone"]
+    image_keys = [key for key in data_dict if "image" in key]
+    local_dir = Path(root) / repo_id
+    videos_dir = local_dir / "videos"
 
-    # for episode_index in tqdm.tqdm(range(num_episodes)):
-    #     for key in image_keys:
-    #         # key = f"observation.images.{name}"
-    #         tmp_imgs_dir = videos_dir / f"{key}_episode_{episode_index:06d}"
-    #         shutil.rmtree(tmp_imgs_dir, ignore_errors=True)
+    for episode_index in tqdm.tqdm(range(num_episodes)):
+        for key in image_keys:
+            # key = f"observation.images.{name}"
+            tmp_imgs_dir = videos_dir / f"{key}_episode_{episode_index:06d}"
+            shutil.rmtree(tmp_imgs_dir, ignore_errors=True)
 
     log_say("Exiting", play_sounds)
     return lerobot_dataset
@@ -610,7 +610,7 @@ if __name__ == "__main__":
     parser_record.add_argument(
         "--num-image-writer-threads-per-camera",
         type=int,
-        default=4,
+        default=8,
         help=(
             "Number of threads writing the frames as png images on disk, per camera. "
             "Too many threads might cause unstable teleoperation fps due to main thread being blocked. "

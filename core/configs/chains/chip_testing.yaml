@@ -1,0 +1,4 @@
+models:
+    eat_chips:
+        repo_id: "1g0rrr/eat_chips"
+        control_time_s: 120
