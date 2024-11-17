@@ -105,20 +105,21 @@ You can model in Google Colab to save time.
 https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab/SimpleAutomationTrainModel.ipynb
 
 -   It will take about 2.5 hours and $1.5 to train typical 80K steps.
--   Choose A100 as fastest GPU.
+-   Choose A100 as the fastest GPU.
 -   Don't disconnect colab and don't close browser as all data will be deleted.
 
 # Hardware
-### S.A.M 01
+### S.A.M.01
 
 ![arm2](https://github.com/user-attachments/assets/35113d53-93b1-4678-af15-463d563cd238)
 
+Join https://discord.gg/yQkVdP5F to get recent information.
 
 ### SO-100
 
 Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
 
-![Leader_And_Follower](./media/so-100.png)
+<img src="./media/so-100.png" width=500/>
 
 # Buy assembled in the US:
 
