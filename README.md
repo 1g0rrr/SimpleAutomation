@@ -48,7 +48,7 @@ For example, in the lamp testing demo, we combined 3 models:
 
 ### Run evaluation
 
--   Change config file for using your models "core/configs/chains/lamp_testing.yaml"
+-   Change the config file for using your models "core/configs/chains/lamp_testing.yaml"
 -   While evaluating press "right" key to move to the next model
 
 ```
@@ -120,7 +120,7 @@ Follow [SO-100](https://github.com/TheRobotStudio/SO-ARM100) to build your arm.
 
 ![Leader_And_Follower](./media/so-100.png)
 
-# Buy assembled in US:
+# Buy assembled in the US:
 
 There are additional costs of assembling
 
@@ -129,11 +129,17 @@ There are additional costs of assembling
 -   Printing: 30-50 hours, $10 plastic
 -   Assembly and calibration: 1-2 days
 
-We can offer properly assembled and calibrated robot in the US for $400
+We can offer properly assembled and calibrated robots in the US for $400
 
-DM me if interested:
+DM me to get details or ask questions: https://x.com/ihorbeaver
+Please start the message with "Buying request".
 
-https://x.com/ihorbeaver
+
+# Join the community
+
+Say 👋 in our [public discord channel](https://discord.gg/yQkVdP5F). We help each other with assembling, training models, and making the robot do something useful. 
+
+Thank you for contributing to SimpleAutomation!
 
 ## Star History
 
