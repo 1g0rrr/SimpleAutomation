@@ -1,6 +1,7 @@
-# Opensource robot to automate repetitive tasks.
+# Make robots do something useful
 
 Currently, it's a set of helper scripts on top of LeRobot repo.
+We are designing a $300 open-source robot arm compatible with π₀ and other foundational robotics models.
 
 <img src="https://github.com/user-attachments/assets/4c30e970-5d89-48ea-86db-72ae8d1ab47a" width=450/>
 
