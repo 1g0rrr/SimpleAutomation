@@ -1,7 +1,8 @@
-# Make robots do something useful
+# Make robots do something useful!
 
-Currently, it's a set of helper scripts on top of LeRobot repo.
-We are also designing a $200 open-source robot arm compatible with π₀ and other foundational robotics models.
+Our goal is to make robots affordable so more people can try them out, discover useful applications, and eventually make money using them to do work.
+
+Currently, it's a set of helper scripts on top of LeRobot, plus a $300 robot arm compatible with π₀ and other foundational robotics models.
 
 <img src="https://github.com/user-attachments/assets/4c30e970-5d89-48ea-86db-72ae8d1ab47a" width=450/>
 
