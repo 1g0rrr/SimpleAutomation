@@ -115,7 +115,7 @@ https://colab.research.google.com/github/1g0rrr/SimpleAutomation/blob/main/colab
 
 ![arm2](https://github.com/user-attachments/assets/35113d53-93b1-4678-af15-463d563cd238)
 
-Join https://discord.gg/yQkVdP5F to get recent information.
+Join https://discord.gg/NFsqq4CVhs to get recent information.
 
 ### SO-100
 
@@ -140,7 +140,7 @@ Please start the message with "Buying request".
 
 # Join the community
 
-Say 👋 in our [public discord channel](https://discord.gg/yQkVdP5F). We help each other with assembling, training models, and making the robot do something useful. 
+Say 👋 in our [public discord channel](https://discord.gg/NFsqq4CVhs). We help each other with assembling, training models, and making the robot do something useful. 
 
 Thank you for contributing to SimpleAutomation!
 
